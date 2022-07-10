@@ -6,8 +6,6 @@ import RequestListPage from '../../pages/RequestListPage';
 const Main = () => {
     return (
         <main>
-            <h1>Main</h1>
-            
             <Routes>
                 <Route path='/' element={<RequestFormPage/>} exact/>
                 <Route path='/request-list' element={<RequestListPage/>}/>

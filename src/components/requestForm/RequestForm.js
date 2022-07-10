@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import cityData from '../../cityData/ua.json';
+import { createNewRequest } from '../../services/api';
 
 const parcelType = ['gadgets', 'drinks', 'clothes', 'medicines', 'other'];
 
 const requestsState = {
     cityFrom: "",
     cityTo: '',
-    parcelType: '',
+    parcelType: 'gadgets',
     dispatchDate: '',
     description: '',
 };
@@ -24,6 +25,12 @@ const RequestForm = () => {
             dispatchDate: todaysDate,
         }))
     }, [todaysDate]);
+
+    const onHandleChange = (e) => {
+        const {name, value} = e.target;
+
+        setRequestData((prev) => ({...prev, [name]: value}));
+    };
 
     const handleFilter = (e) => {
         const {name, value} = e.target;
@@ -55,11 +62,15 @@ const RequestForm = () => {
         setRequestData((prev) => ({...prev, cityTo: e.target.innerHTML}));
     };
 
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
+        console.log('hello')
+        createNewRequest({...requestData})
+    };
 
     return (
         <div>
-            <h1>Request form</h1>
-            <form>
+            <form onSubmit={onHandleSubmit}>
                 <label>
                     From
                     <input
@@ -110,6 +121,7 @@ const RequestForm = () => {
                     <select
                         name='parcelType'
                         value={requestData.parcelType}
+                        onChange={onHandleChange}
                     >
                         {parcelType.map((type)=>(
                             <option
@@ -128,6 +140,7 @@ const RequestForm = () => {
                         name='dispatchDate'
                         value={requestData.dispatchDate}
                         min={todaysDate}
+                        onChange={onHandleChange}
                     />
                 </label>
                 <label>
@@ -137,12 +150,15 @@ const RequestForm = () => {
                         value={requestData.description}
                         cols="35" 
                         rows="3"
+                        onChange={onHandleChange}
                     />
                 </label>
+                <button
+                    type='submit'
+                >
+                    Create a request
+                </button>
             </form>
-            <button>
-                Create a request
-            </button>
         </div>
     );
 };
