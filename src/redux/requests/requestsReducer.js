@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { getRequests, setError, setLoader } from "./requestsActions";
 
 const requestsItemReducer = createReducer([], {
-    [getRequests]: (state, action) => [action.payload],
+    [getRequests]: (state, action) => action.payload,
 });
 
 const requestsLoaderReducer = createReducer(false, {

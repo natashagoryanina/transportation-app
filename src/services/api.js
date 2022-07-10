@@ -14,3 +14,21 @@ export const createNewRequest = async (request) => {
         console.log(error)
     }
 };
+
+export const getAllRequests = async () => {
+    try {
+        const response = await axios.get(
+            BASE_URL + `/requests.json`
+        );
+        if (response.data) {
+            const keys = Object.keys(response.data);
+            const requests = keys.map((key) => ({
+                id: key,
+                ...response.data[key]
+            }));
+            return requests;
+        };
+    } catch (error) {
+        throw new Error(error);
+    }
+};
