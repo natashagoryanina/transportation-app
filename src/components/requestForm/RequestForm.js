@@ -80,7 +80,7 @@ const RequestForm = () => {
                         onChange={handleFilter}
                         autoFocus
                     />
-                    { filteredFromCityData.length !== 0 && (
+                    {filteredFromCityData.length !== 0 && (
                         <div>
                             {filteredFromCityData.slice(0, 15).map((data) => {
                                 return <div 
@@ -102,7 +102,7 @@ const RequestForm = () => {
                         value={requestData.cityTo}
                         onChange={handleFilter}
                     />
-                    { filteredToCityData.length !== 0 && (
+                    {filteredToCityData.length !== 0 && (
                         <div>
                             {filteredToCityData.slice(0, 15).map((data) => {
                                 return <div 
