@@ -1,9 +1,15 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { getRequests, setError, setLoader } from "./requestsActions";
+import {  
+    getRequests, 
+    removeRequest, 
+    setError, 
+    setLoader 
+} from "./requestsActions";
 
 const requestsItemReducer = createReducer([], {
     [getRequests]: (state, action) => action.payload,
+    [removeRequest]: (state, action) => state.filter((request) => request.id !== action.payload),
 });
 
 const requestsLoaderReducer = createReducer(false, {

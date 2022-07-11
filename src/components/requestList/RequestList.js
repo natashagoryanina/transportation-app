@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRequestsOperation } from '../../redux/requests/requestsOperations';
+import RequestListItem from './requestListItem/RequestListItem';
 
 const RequestList = () => {
 
@@ -11,13 +12,16 @@ const RequestList = () => {
         dispatch(getAllRequestsOperation());
     }, [dispatch]);
 
-    console.log(requests);
-
     return (
         <div>
             <h1>Request list</h1>
             <ul>
-
+                {requests.map((request)=> (
+                    <RequestListItem
+                        request={request}
+                        key={request.id}
+                    />
+                ))}
             </ul>
         </div>
     );

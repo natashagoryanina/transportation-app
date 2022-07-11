@@ -8,10 +8,9 @@ export const createNewRequest = async (request) => {
             BASE_URL + `/requests.json`,
             request
         );
-        console.log(response);
         return response.data.name;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
@@ -28,6 +27,14 @@ export const getAllRequests = async () => {
             }));
             return requests;
         };
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+export const removeRequestById = async (id) => {
+    try {
+        await axios.delete(BASE_URL + `/requests/${id}.json`);
     } catch (error) {
         throw new Error(error);
     }

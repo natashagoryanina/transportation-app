@@ -7,7 +7,7 @@ const parcelType = ['gadgets', 'drinks', 'clothes', 'medicines', 'other'];
 const requestsState = {
     cityFrom: "",
     cityTo: '',
-    parcelType: 'gadgets',
+    parcelType: 'other',
     dispatchDate: '',
     description: '',
 };
@@ -64,7 +64,6 @@ const RequestForm = () => {
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        console.log('hello')
         createNewRequest({...requestData})
     };
 
@@ -82,7 +81,7 @@ const RequestForm = () => {
                     />
                     {filteredFromCityData.length !== 0 && (
                         <div>
-                            {filteredFromCityData.slice(0, 15).map((data) => {
+                            {filteredFromCityData.slice(0, 10).map((data) => {
                                 return <div 
                                             onClick={chooseFromCity} 
                                         >
@@ -104,7 +103,7 @@ const RequestForm = () => {
                     />
                     {filteredToCityData.length !== 0 && (
                         <div>
-                            {filteredToCityData.slice(0, 15).map((data) => {
+                            {filteredToCityData.slice(0, 10).map((data) => {
                                 return <div 
                                             onClick={chooseToCity} 
                                         >
