@@ -1,8 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-     body {
-        
+    body {
         font-family: 'Ubuntu', sans-serif;
         background-image: linear-gradient( 
             to right,

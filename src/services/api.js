@@ -10,7 +10,7 @@ export const createNewRequest = async (request) => {
         );
         return response.data.name;
     } catch (error) {
-        console.log(error);
+        throw new Error(error);
     }
 };
 

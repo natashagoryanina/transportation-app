@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const RequestFormContainer = styled.div`
     margin: auto;
-    margin-top: 100px;
+    margin-top: 75px;
     padding: 40px;
-    width: 550px;
+    width: 500px;
     background-color: #ffffff96;
     border-radius: 12px;
 
@@ -20,7 +20,6 @@ export const RequestFormContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        
         
         &_label {
             display: flex;
@@ -105,6 +104,10 @@ export const RequestFormContainer = styled.div`
             font-size: inherit;
             font-weight: inherit;
             cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 

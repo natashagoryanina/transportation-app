@@ -6,7 +6,7 @@ import { RequestFormContainer } from './RequestFormStyled';
 const parcelType = ['gadgets', 'drinks', 'clothes', 'medicines', 'other'];
 
 const requestsState = {
-    cityFrom: "",
+    cityFrom: '',
     cityTo: '',
     parcelType: 'other',
     dispatchDate: '',
@@ -69,7 +69,12 @@ const RequestForm = () => {
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        createNewRequest({...requestData})
+        createNewRequest({...requestData});
+        setRequestData({
+            ...requestsState, 
+            dispatchDate: todaysDate,
+            creationDate: todaysDate
+        });
     };
 
     return (
