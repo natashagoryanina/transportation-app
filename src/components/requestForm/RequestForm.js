@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import cityData from '../../cityData/ua.json';
 import { createNewRequest } from '../../services/api';
+import { RequestFormContainer } from './RequestFormStyled';
 
 const parcelType = ['gadgets', 'drinks', 'clothes', 'medicines', 'other'];
 
@@ -10,6 +11,7 @@ const requestsState = {
     parcelType: 'other',
     dispatchDate: '',
     description: '',
+    creationDate: '',
 };
 
 const RequestForm = () => {
@@ -23,6 +25,7 @@ const RequestForm = () => {
         setRequestData((prev) => ({
             ...prev, 
             dispatchDate: todaysDate,
+            creationDate: todaysDate,
         }))
     }, [todaysDate]);
 
@@ -56,10 +59,12 @@ const RequestForm = () => {
 
     const chooseFromCity = (e) => {
         setRequestData((prev) => ({...prev, cityFrom: e.target.innerHTML}));
+        setFilteredFromCityData([]);
     };
 
     const chooseToCity = (e) => {
         setRequestData((prev) => ({...prev, cityTo: e.target.innerHTML}));
+        setFilteredToCityData([]);
     };
 
     const onHandleSubmit = (e) => {
@@ -68,56 +73,66 @@ const RequestForm = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={onHandleSubmit}>
-                <label>
-                    From
-                    <input
-                        type="text"
-                        name="cityFrom"
-                        value={requestData.cityFrom}
-                        onChange={handleFilter}
-                        autoFocus
-                    />
-                    {filteredFromCityData.length !== 0 && (
-                        <div>
-                            {filteredFromCityData.slice(0, 10).map((data) => {
-                                return <div 
-                                            onClick={chooseFromCity} 
-                                        >
-                                            {data.city}, 
-                                            {data.admin_name}
-                                        </div>
-                            })}
-                        </div>
-                        )
-                    }
+        <RequestFormContainer>
+            <h3 className='request-form-title'>Request creation form</h3>
+            <form className='request-form' onSubmit={onHandleSubmit}>
+                <label className='request-form_label'>
+                    From:
+                    <div className='request-form_filter-container'>
+                        <input
+                            className='request-form_input'
+                            type="text"
+                            name="cityFrom"
+                            value={requestData.cityFrom}
+                            onChange={handleFilter}
+                            autoFocus
+                        />
+                        {filteredFromCityData.length !== 0 && (
+                            <div className='request-form_filter'>
+                                {filteredFromCityData.slice(0, 20).map((data) => {
+                                    return <div 
+                                                className='request-form_filter-item'
+                                                onClick={chooseFromCity} 
+                                            >
+                                                {data.city}, 
+                                                {data.admin_name}
+                                            </div>
+                                })}
+                            </div>
+                            )
+                        }
+                    </div>
                 </label>
-                <label>
-                    To
-                    <input
-                        type='text'
-                        name='cityTo'
-                        value={requestData.cityTo}
-                        onChange={handleFilter}
-                    />
-                    {filteredToCityData.length !== 0 && (
-                        <div>
-                            {filteredToCityData.slice(0, 10).map((data) => {
-                                return <div 
-                                            onClick={chooseToCity} 
-                                        >
-                                            {data.city}, 
-                                            {data.admin_name}
-                                        </div>
-                            })}
-                        </div>
-                        )
-                    }
+                <label className='request-form_label'>
+                    To:
+                    <div className='request-form_filter-container'>
+                        <input
+                            className='request-form_input'
+                            type='text'
+                            name='cityTo'
+                            value={requestData.cityTo}
+                            onChange={handleFilter}
+                        />
+                        {filteredToCityData.length !== 0 && (
+                            <div className='request-form_filter'>
+                                {filteredToCityData.slice(0, 20).map((data) => {
+                                    return <div 
+                                                className='request-form_filter-item'
+                                                onClick={chooseToCity} 
+                                            >
+                                                {data.city}, 
+                                                {data.admin_name}
+                                            </div>
+                                })}
+                            </div>
+                            )
+                        }
+                    </div>
                 </label>
-                <label>
-                    Type of parcel
+                <label className='request-form_label'>
+                    Type of parcel: 
                     <select
+                        className='request-form_select'
                         name='parcelType'
                         value={requestData.parcelType}
                         onChange={onHandleChange}
@@ -132,9 +147,10 @@ const RequestForm = () => {
                         ))}
                     </select>
                 </label>
-                <label>
-                    Date of dispatch
+                <label className='request-form_label'>
+                    Date of dispatch: 
                     <input
+                        className='request-form_date'
                         type='date'
                         name='dispatchDate'
                         value={requestData.dispatchDate}
@@ -142,9 +158,10 @@ const RequestForm = () => {
                         onChange={onHandleChange}
                     />
                 </label>
-                <label>
-                    Description 
+                <label className='request-form_label'>
+                    Description:
                     <textarea
+                        className='request-form_textarea'
                         name='description'
                         value={requestData.description}
                         cols="35" 
@@ -153,12 +170,13 @@ const RequestForm = () => {
                     />
                 </label>
                 <button
+                    className='btn'
                     type='submit'
                 >
                     Create a request
                 </button>
             </form>
-        </div>
+        </RequestFormContainer>
     );
 };
 

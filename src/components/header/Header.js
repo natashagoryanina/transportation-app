@@ -1,12 +1,12 @@
 import React from 'react';
 import HeaderList from './headerList/HeaderList';
+import { HeaderContainer } from './HeaderStyled';
 
 const Header = () => {
     return (
-        <header>
-            <h1>Header</h1>
+        <HeaderContainer>
             <HeaderList/>
-        </header>
+        </HeaderContainer>
     );
 };
 

@@ -16,6 +16,7 @@ const RequestListItem = ({request}) => {
             <p>Type of parcel: {request.parcelType}</p>
             <p>Date of dispatch: {request.dispatchDate}</p>
             <p>Parcel description: {request.description}</p>
+            <p>The request was created: {request.creationDate}</p>
             <button onClick={remove}>Delete</button>
         </li>
     );
