@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/transportation-app/static/css/main.e6c13ad2.css",
+    "main.js": "/transportation-app/static/js/main.6a968047.js",
+    "index.html": "/transportation-app/index.html",
+    "main.e6c13ad2.css.map": "/transportation-app/static/css/main.e6c13ad2.css.map",
+    "main.6a968047.js.map": "/transportation-app/static/js/main.6a968047.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.6a968047.js"
+  ]
+}
