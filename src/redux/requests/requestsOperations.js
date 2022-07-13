@@ -1,5 +1,6 @@
-import { removeRequestById, getAllRequests } from "../../services/api";
+import { removeRequestById, getAllRequests, editRequestById } from "../../services/api";
 import { 
+    editRequest,
     getRequests, 
     removeRequest, 
     setError, 
@@ -33,7 +34,21 @@ const removeRequestByIdOperation = (id) =>
         }
     };
 
+const editRequestByIdOperation = (id, editedRequest) => 
+    async (dispatch) => {
+        dispatch(setLoader());
+        try {
+            await editRequestById(id, editedRequest);
+            dispatch(editRequest({id: id, ...editedRequest}));
+        } catch (error) {
+            dispatch(setError(error.message));
+        } finally {
+            dispatch(setLoader());
+        }
+    };
+
 export {
     getAllRequestsOperation,
-    removeRequestByIdOperation
+    removeRequestByIdOperation,
+    editRequestByIdOperation
 };

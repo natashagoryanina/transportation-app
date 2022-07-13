@@ -3,6 +3,8 @@ import cityData from '../../cityData/ua.json';
 import Form from '../form/Form';
 import { ModalContainer } from './ModalStyled';
 import sprite from '../../icons/editForm/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { editRequestByIdOperation } from '../../redux/requests/requestsOperations';
 
 const parcelType = ['gadgets', 'drinks', 'clothes', 'medicines', 'other'];
 
@@ -20,6 +22,8 @@ const Modal = ({requestData, toggleModal}) => {
     const [filteredFromCityData, setFilteredFromCityData] = useState([]);
     const [filteredToCityData, setFilteredToCityData] = useState([]);
 
+    const dispatch = useDispatch();
+
     useEffect(() => (
         setEditedRequestData({
             cityFrom: requestData.cityFrom,
@@ -29,7 +33,12 @@ const Modal = ({requestData, toggleModal}) => {
             description: requestData.description,
             creationDate: requestData.creationDate,
         })
-    ), [requestData.cityFrom, requestData.cityTo, requestData.creationDate, requestData.description, requestData.dispatchDate, requestData.parcelType]);
+    ), [
+        requestData.cityFrom, requestData.cityTo, 
+        requestData.creationDate, requestData.description, 
+        requestData.dispatchDate, requestData.parcelType
+        ]
+    );
 
     let todaysDate = new Date().toISOString().slice(0, 10);
 
@@ -62,18 +71,18 @@ const Modal = ({requestData, toggleModal}) => {
     };
 
     const chooseFromCity = (e) => {
-        editedRequestData((prev) => ({...prev, cityFrom: e.target.innerHTML}));
+        setEditedRequestData((prev) => ({...prev, cityFrom: e.target.innerHTML}));
         setFilteredFromCityData([]);
     };
 
     const chooseToCity = (e) => {
-        editedRequestData((prev) => ({...prev, cityTo: e.target.innerHTML}));
+        setEditedRequestData((prev) => ({...prev, cityTo: e.target.innerHTML}));
         setFilteredToCityData([]);
     };
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        console.log('onHandleSubmit')
+        dispatch(editRequestByIdOperation(requestData.id, editedRequestData));
     };
 
     return (

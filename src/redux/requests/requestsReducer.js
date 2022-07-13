@@ -4,12 +4,17 @@ import {
     getRequests, 
     removeRequest, 
     setError, 
-    setLoader 
+    setLoader,
+    editRequest
 } from "./requestsActions";
 
 const requestsItemReducer = createReducer([], {
     [getRequests]: (state, action) => action.payload,
     [removeRequest]: (state, action) => state.filter((request) => request.id !== action.payload),
+    [editRequest]: (state, action) => 
+            state.map((request) => 
+            request.id === action.payload.id ? {...action.payload} : request
+        )
 });
 
 const requestsLoaderReducer = createReducer(false, {

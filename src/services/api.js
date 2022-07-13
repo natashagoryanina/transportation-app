@@ -39,3 +39,14 @@ export const removeRequestById = async (id) => {
         throw new Error(error);
     }
 };
+
+export const editRequestById = async (id, editedRequest) => {
+    try {
+        await axios.patch(
+            BASE_URL + `/requests/${id}.json`,
+            editedRequest
+        )
+    } catch (error) {
+        throw new Error(error);
+    }
+};
