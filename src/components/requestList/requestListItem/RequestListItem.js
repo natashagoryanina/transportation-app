@@ -55,7 +55,7 @@ const RequestListItem = ({request}) => {
             >
                 Edit
             </button>
-            {modal && <Modal requestData={request}/>}
+            {modal && <Modal requestData={request} toggleModal={toggleModal}/>}
         </RequestListItemContainer>
     );
 };

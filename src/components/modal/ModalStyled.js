@@ -13,6 +13,7 @@ export const ModalContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     background-image: linear-gradient( 
         to right,
@@ -22,4 +23,18 @@ export const ModalContainer = styled.div`
     );
     z-index: 1200;
     overflow: auto;
+
+    .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        &_icon {
+            width: 20px;
+            height: 20px;
+            fill: #5312eb;
+            cursor: pointer;
+        }
+    }
+
 `;

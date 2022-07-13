@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import cityData from '../../cityData/ua.json';
 import { createNewRequest } from '../../services/api';
 import Form from '../form/Form';
+import { RequestFormContainer } from './RequestFormStyled';
 
 const parcelType = ['gadgets', 'drinks', 'clothes', 'medicines', 'other'];
 
-const requestsState = {
+const requestState = {
     cityFrom: '',
     cityTo: '',
     parcelType: 'other',
@@ -15,7 +16,7 @@ const requestsState = {
 };
 
 const RequestForm = () => {
-    const [requestData, setRequestData] = useState(requestsState);
+    const [requestData, setRequestData] = useState(requestState);
     const [filteredFromCityData, setFilteredFromCityData] = useState([]);
     const [filteredToCityData, setFilteredToCityData] = useState([]);
 
@@ -71,29 +72,29 @@ const RequestForm = () => {
         e.preventDefault();
         createNewRequest({...requestData});
         setRequestData({
-            ...requestsState, 
+            ...requestState, 
             dispatchDate: todaysDate,
             creationDate: todaysDate
         });
     };
 
     return (
-        <>
-        <Form 
-            filteredFromCityData={filteredFromCityData}
-            filteredToCityData={filteredToCityData}
-            chooseFromCity={chooseFromCity}
-            chooseToCity={chooseToCity}
-            handleFilter={handleFilter}
-            requestData={requestData}
-            onHandleChange={onHandleChange}
-            onHandleSubmit={onHandleSubmit}
-            parcelType={parcelType}
-            todaysDate={todaysDate}
-            formTitle='Request creation form'
-            btnName=' Create a request'
-        />
-    </>
+        <RequestFormContainer>
+            <Form 
+                filteredFromCityData={filteredFromCityData}
+                filteredToCityData={filteredToCityData}
+                chooseFromCity={chooseFromCity}
+                chooseToCity={chooseToCity}
+                handleFilter={handleFilter}
+                requestData={requestData}
+                onHandleChange={onHandleChange}
+                onHandleSubmit={onHandleSubmit}
+                parcelType={parcelType}
+                todaysDate={todaysDate}
+                formTitle='Request creation form'
+                btnName=' Create a request'
+            />
+        </RequestFormContainer>
     );
 };
 

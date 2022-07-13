@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import cityData from '../../cityData/ua.json';
 import Form from '../form/Form';
 import { ModalContainer } from './ModalStyled';
+import sprite from '../../icons/editForm/sprite.svg';
 
 const parcelType = ['gadgets', 'drinks', 'clothes', 'medicines', 'other'];
 
-const requestsState = {
+const requestState = {
     cityFrom: '',
     cityTo: '',
     parcelType: 'other',
@@ -14,8 +15,8 @@ const requestsState = {
     creationDate: '',
 };
 
-const Modal = ({requestData}) => {
-    const [editedRequestData, setEditedRequestData] = useState(requestsState);
+const Modal = ({requestData, toggleModal}) => {
+    const [editedRequestData, setEditedRequestData] = useState(requestState);
     const [filteredFromCityData, setFilteredFromCityData] = useState([]);
     const [filteredToCityData, setFilteredToCityData] = useState([]);
 
@@ -70,12 +71,18 @@ const Modal = ({requestData}) => {
         setFilteredToCityData([]);
     };
 
-    const onHandleSubmit = () => {
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
         console.log('onHandleSubmit')
     };
 
     return (
         <ModalContainer>
+            <div className='modal-close'>
+                <svg className='modal-close_icon' onClick={toggleModal}>
+                    <use href={sprite + '#icon-cross'}/>
+                </svg>
+            </div>
             <Form 
                 filteredFromCityData={filteredFromCityData} 
                 filteredToCityData={filteredToCityData}
