@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeRequestByIdOperation } from '../../../redux/requests/requestsOperations';
+import Modal from '../../modal/Modal';
 import { RequestListItemContainer } from './RequestListItemStyled';
 
 const RequestListItem = ({request}) => {
+    const [modal, setModal] = useState(false);
+
     const dispatch = useDispatch();
 
     const remove = () => {
         dispatch(removeRequestByIdOperation(request.id));
+    };
+
+    const toggleModal = () => {
+        setModal(prev => !prev);
     };
 
     return (
@@ -37,11 +44,18 @@ const RequestListItem = ({request}) => {
                 {request.creationDate}
             </p>
             <button 
-                className='btn'
+                className='btn-delete'
                 onClick={remove}
             >
                 Delete
             </button>
+            <button 
+                className='btn-edit'
+                onClick={toggleModal}
+            >
+                Edit
+            </button>
+            {modal && <Modal requestData={request}/>}
         </RequestListItemContainer>
     );
 };

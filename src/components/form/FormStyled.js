@@ -1,25 +1,26 @@
 import styled from "styled-components";
 
-export const RequestFormContainer = styled.div`
+export const FormContainer = styled.div`
     margin: auto;
     margin-top: 75px;
+    margin-bottom: 75px;
     padding: 40px;
     width: 500px;
     background-color: #ffffff96;
     border-radius: 12px;
 
-    .request-form-title {
-        margin-bottom: 30px;
-        font-size: 25px;
-        font-weight: 700;
-        text-align: center;
-        color: #5312eb;
-    }
-
-    .request-form {
+    .form {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+
+        &_title {
+            margin-bottom: 30px;
+            font-size: 25px;
+            font-weight: 700;
+            text-align: center;
+            color: #5312eb;
+        }
         
         &_label {
             display: flex;
@@ -131,19 +132,19 @@ export const RequestFormContainer = styled.div`
         }
     }
 
-    .request-form_filter-container {
+    .form_filter-container {
         display: flex;
         flex-direction: column;
     }
 
-    .request-form_filter {
+    .form_filter {
         margin-left: 15px;
         margin-top: 4px;
         padding: 2px 12px;
         overflow: hidden;
         overflow-y: auto;
         width: 350px;
-        height: 100px;
+        height: 70px;
         
         font-size: 15px;
         font-weight: 400;

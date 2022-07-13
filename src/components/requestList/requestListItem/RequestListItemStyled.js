@@ -27,22 +27,44 @@ export const RequestListItemContainer = styled.li`
     }
 
     .btn {
-        margin: auto;
-        padding: 2px 0;
-        width: 100px;
-        background-color: #5312eb;
-        border: 1px solid #5312eb;
-        border-radius: 12px;
-        color: #fff;
+        &-delete {
+            margin: auto;
+            padding: 2px 0;
+            width: 100px;
+            background-color: #5312eb;
+            border: 1px solid #5312eb;
+            border-radius: 12px;
+            color: #fff;
 
-        font-family: inherit;
-        font-size: 20px;
-        font-weight: 400;
-        cursor: pointer;
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 400;
+            cursor: pointer;
 
-        &:hover {
-            background-color: #fff;
-            color: #5312eb;
+            &:hover {
+                background-color: #fff;
+                color: #5312eb;
+            }
+        }
+       
+        &-edit {
+            margin-left: 10px;
+            padding: 2px 0;
+            width: 100px;
+            background-color: #5312eb;
+            border: 1px solid #5312eb;
+            border-radius: 12px;
+            color: #fff;
+
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 400;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #fff;
+                color: #5312eb;
+            }
         }
     }
 `;
