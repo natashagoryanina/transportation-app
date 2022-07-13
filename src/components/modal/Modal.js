@@ -83,6 +83,7 @@ const Modal = ({requestData, toggleModal}) => {
     const onHandleSubmit = (e) => {
         e.preventDefault();
         dispatch(editRequestByIdOperation(requestData.id, editedRequestData));
+        toggleModal();
     };
 
     return (

@@ -36,5 +36,4 @@ export const ModalContainer = styled.div`
             cursor: pointer;
         }
     }
-
 `;
