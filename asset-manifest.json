@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/transportation-app/static/css/main.e6c13ad2.css",
-    "main.js": "/transportation-app/static/js/main.6a968047.js",
+    "main.js": "/transportation-app/static/js/main.1a684e9a.js",
+    "static/media/sprite.svg": "/transportation-app/static/media/sprite.fe497658cf7feec218a6effffc781425.svg",
     "index.html": "/transportation-app/index.html",
     "main.e6c13ad2.css.map": "/transportation-app/static/css/main.e6c13ad2.css.map",
-    "main.6a968047.js.map": "/transportation-app/static/js/main.6a968047.js.map"
+    "main.1a684e9a.js.map": "/transportation-app/static/js/main.1a684e9a.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.6a968047.js"
+    "static/js/main.1a684e9a.js"
   ]
 }
